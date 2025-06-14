@@ -36,7 +36,7 @@ public class EmailServiceImpl implements EmailService {
             message.setText(getEmailMessage(name, host, token));
             sender.send(message);
         }catch (Exception e){
-            log.error(e.getMessage());
+            System.out.println(e.getMessage());
             throw new ApiException("Unable to send email");
         }
 
@@ -53,7 +53,7 @@ public class EmailServiceImpl implements EmailService {
             message.setText(getResetPasswordMessage(name, host, token));
             sender.send(message);
         }catch (Exception e){
-            log.error(e.getMessage());
+            System.out.println(e.getMessage());
             throw new ApiException("Unable to send email");
         }
     }
