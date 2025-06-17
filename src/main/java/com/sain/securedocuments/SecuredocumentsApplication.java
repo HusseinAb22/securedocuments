@@ -23,18 +23,18 @@ public class SecuredocumentsApplication {
 	@Bean
 	CommandLineRunner commandLineRunner(RoleRepository roleRepository){
 		return args -> {
-			RequestContext.setUserId(0L);
-			var userRole = new RolesEntity();
-			userRole.setName(Authority.USER.name());
-			userRole.setAuthorities(Authority.USER);
-			roleRepository.save(userRole);
-
-			var adminRole = new RolesEntity();
-			adminRole.setName(Authority.ADMIN.name());
-			adminRole.setAuthorities(Authority.ADMIN);
-			roleRepository.save(adminRole);
-
-			RequestContext.start();
+//			RequestContext.setUserId(0L);
+//			var userRole = new RolesEntity();
+//			userRole.setName(Authority.USER.name());
+//			userRole.setAuthorities(Authority.USER);
+//			roleRepository.save(userRole);
+//
+//			var adminRole = new RolesEntity();
+//			adminRole.setName(Authority.ADMIN.name());
+//			adminRole.setAuthorities(Authority.ADMIN);
+//			roleRepository.save(adminRole);
+//
+//			RequestContext.start();
 		};
 	}
 

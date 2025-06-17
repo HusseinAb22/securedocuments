@@ -1,14 +1,14 @@
 package com.sain.securedocuments.service.impl;
 
 import com.sain.securedocuments.entity.ConfirmationEntity;
-import com.sain.securedocuments.entity.CredintialEntity;
+import com.sain.securedocuments.entity.CredentialEntity;
 import com.sain.securedocuments.entity.RolesEntity;
 import com.sain.securedocuments.entity.UserEntity;
 import com.sain.securedocuments.enumeration.Authority;
 import com.sain.securedocuments.enumeration.EventType;
 import com.sain.securedocuments.event.UserEvent;
 import com.sain.securedocuments.repository.ConfirmationRepository;
-import com.sain.securedocuments.repository.CredintialsRepository;
+import com.sain.securedocuments.repository.CredentialsRepository;
 import com.sain.securedocuments.repository.RoleRepository;
 import com.sain.securedocuments.repository.UserRepository;
 import com.sain.securedocuments.service.UserService;
@@ -29,7 +29,7 @@ import static com.sain.securedocuments.utils.UserUtils.createUserEntity;
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-    private final CredintialsRepository credintialsRepository;
+    private final CredentialsRepository credintialsRepository;
     private final ConfirmationRepository confirmationRepository;
     //private final BCryptEncoder encoder;
     private final ApplicationEventPublisher publisher;
@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void createUser(String firstName, String lastName, String email, String password) {
         var userEntity = userRepository.save(createNewUser(firstName,lastName,email));
-        var credentialEntity = new CredintialEntity(password,userEntity);
+        var credentialEntity = new CredentialEntity(password,userEntity);
         credintialsRepository.save(credentialEntity);
         var confirmationEntity = new ConfirmationEntity(userEntity);
         confirmationRepository.save(confirmationEntity);
